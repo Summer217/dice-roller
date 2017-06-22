@@ -1,0 +1,30 @@
+#fields > .dice-container input {
+	color: purple;
+	letter-spacing: 0.4em;
+	text-decoration: underline;
+	
+}
+
+#fields > div > input ~ select {
+	color: violet;
+	text-decoration: underline;
+}
+
+.formAddons input {
+	text-decoration-style: wavy;
+	letter-spacing: 1em;
+}
+
+.formAddons > div > div > select {
+	color: brown;
+}
+
+#results > div {
+	color: red;
+	div[class] {
+		text-decoration: underline;
+	}
+}
+
+
+
