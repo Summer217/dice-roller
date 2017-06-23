@@ -19,7 +19,9 @@ function giveContUniqueId(input) {
 	input.id = 'container-' + numOfCont;
 	input.children[0].id = 'countField-' + numOfCont;
 	input.children[1].id = 'dieType-' + numOfCont;
-	console.log(input.children[1].id);
+	/*Uncomment Below to enable remove button features
+	input.children[2].id = '' + numOfCont;
+	*/
 }
 
 /*counts how many times moreMenuButton has been clicked to maintain accurate # of total containers.
@@ -28,6 +30,13 @@ function clickedMore(clickCount) {
 	clickCount++;
 	return clickCount;
 }
+
+/*Uncomment below to enable remove button features
+function removeCont(buttonId) {
+	var thisCont = document.getElementById("container-" + buttonId);
+	thisCont.remove();
+}
+*/
 
 /*Stores dice types and counts so that rollDice can use them as parameters*/
 var dicebag = [];
@@ -64,7 +73,19 @@ function addMenu() {
 	/*Resets number field to 1 to provide visual cohesion and organization*/
 	newCountField.value = 1;
 	var newDieField = newMenus.children[1];
+	/*Uncomment below to enable remove button features
+	var removeBtn = document.createElement("input");
+	removeBtn.type = 'button';
+	removeBtn.value = "Remove";
+	newMenus.appendChild(removeBtn);
+	*/
 	giveContUniqueId(newMenus);
+	/*Uncomment below to enable remove button features
+	var buttonId = removeBtn.id;
+	removeBtn.onclick = function(){
+		removeCont(buttonId);
+	}
+	*/
 	var addons = document.getElementById('addons');
 	addons.appendChild(newMenus);
  }
