@@ -54,7 +54,6 @@ function populateBag() {
 
 /*Copies dice amount and dice type field when more is pressed*/
 function addMenu() {
-	counter++;
 	numOfCont = clickedMore(numOfCont);
 	var newMenus = document.getElementById('container-1').cloneNode(true);
 	newMenus.id = '';
