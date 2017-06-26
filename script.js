@@ -1,8 +1,45 @@
 /*Main function.
 Called by submitButton (value = Roll!)*/
 function roller(){
+	tableMaker();
 	populateBag();
 	rollDice();
+}
+
+var tableRow = null;
+var cellDie = null;
+
+function rowFiller(die, cellResult) {
+	tableRow = document.createElement('tr');
+	cellDie = document.createElement('td');
+	cellDie.innerHTML = die;
+	tableRow.appendChild(cellDie);
+	tableRow.appendChild(cellResult);
+}
+
+/*Adds headers to table*/
+function tableMaker() {
+	var table = document.getElementById('table');
+	var headRow = document.createElement('tr');
+	var headDie = document.createElement('th');
+	var headResult = document.createElement('th');
+	var headTotal = document.createElement('th');
+	var headAverage = document.createElement('th');
+	var headMin = document.createElement('th');
+	var headMax = document.createElement('th');
+	headDie.innerHTML = 'Die';
+	headResult.innerHTML = 'Result';
+	headTotal.innerHTML = 'Total';
+	headAverage.innerHTML = 'Average';
+	headMin.innerHTML = 'Min';
+	headMax.innerHTML = 'Max';
+	headRow.appendChild(headDie);
+	headRow.appendChild(headResult);
+	headRow.appendChild(headTotal);
+	headRow.appendChild(headAverage);
+	headRow.appendChild(headMin);
+	headRow.appendChild(headMax);
+	table.appendChild(headRow);
 }
 
 function getRandRollBySides (min, max) {
@@ -98,7 +135,7 @@ function rollDice() {
 			var div = document.createElement('div');
 			// append class bagD.die to above div
 			div.classList.add(bagD.die)
-			
+			var cellResult = document.createElement('td');
 			/*Iterates thru dicebag to roll a specific die (num) times.
 			Ensures that each die is rolled enough times.*/
 			for(var i = 1; i <= bagD.num; i++) {
@@ -107,13 +144,21 @@ function rollDice() {
 				/*Stores random dice roll within sides of die.
 				Ensures that die rolls cannot be impossibly large*/
 				var result =  (getRandRollBySides(1, dspanMatcher));
-				var diceSpan = document.createElement('span');
+				//var diceSpan = document.createElement('span');
+				cellResult.innerHTML = cellResult.innerHTML + result;
+				
+				/*Add commas if result number is not first or last in series*/
+				if(bagD.num > 1 && i != bagD.num) {
+					cellResult.innerHTML = cellResult.innerHTML + ", ";	
+				}
+				rowFiller(bagD.die, cellResult);
 				/*Places result value in diceSpan to display results in HTML*/
-				diceSpan.innerHTML = result;
-				div.appendChild(diceSpan);
+				//diceSpan.innerHTML = result;
+				//div.appendChild(diceSpan);
 				/*For Loop End*/
 			}
-			document.getElementById('results').appendChild(div);
+			//document.getElementById('results').appendChild(div);
+			document.getElementById('table').appendChild(tableRow);
 		}
 	else console.log("ERROR for number input for " + bagD.die + ". Please input a non-negative integer.");
   });
