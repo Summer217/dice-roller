@@ -5,6 +5,7 @@ function roller(){
 	populateBag();
 	rollDice();
 }
+
 var prevRoll = null;
 var minimum = null;
 var maximum = null;
