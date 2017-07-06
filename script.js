@@ -6,15 +6,35 @@ function roller(){
 	rollDice();
 }
 
+var prevRoll = null;
+var minimum = null;
+var maximum = null;
 var tableRow = null;
 var cellDie = null;
+var tableRow = null;
+var cellDie = null;
+var cellTotal = null;
+var cellAverage = null;
+var cellMin = null;
+var cellMax = null;
 
-function rowFiller(die, cellResult) {
+function rowFiller(die, cellResult, total, average) {
 	tableRow = document.createElement('tr');
 	cellDie = document.createElement('td');
+	cellAverage = document.createElement('td');
+  	cellMin = document.createElement('td');
+  	cellMax = document.createElement('td');
 	cellDie.innerHTML = die;
+	cellTotal.innerHTML = total;
+  	cellAverage.innerHTML = Math.round(average);
+  	cellMin.innerHTML = minimum;
+  	cellMax.innerHTML = maximum;
 	tableRow.appendChild(cellDie);
 	tableRow.appendChild(cellResult);
+	tableRow.appendChild(cellTotal);
+  	tableRow.appendChild(cellAverage);
+  	tableRow.appendChild(cellMin);
+  	tableRow.appendChild(cellMax);
 }
 
 /*Adds headers to table*/
@@ -40,6 +60,21 @@ function tableMaker() {
 	headRow.appendChild(headMin);
 	headRow.appendChild(headMax);
 	table.appendChild(headRow);
+}
+
+function minMax(result, prev) {
+  if(prev == null) {
+    //console.log("YAY")
+    prevRoll = result;
+    minimum = result;
+    maximum = result;
+  }
+  if(result > maximum) {
+    maximum = result;
+  }
+  if(result < minimum) {
+    minimum = result;
+  }
 }
 
 function getRandRollBySides (min, max) {
@@ -135,7 +170,13 @@ function rollDice() {
 			var div = document.createElement('div');
 			// append class bagD.die to above div
 			div.classList.add(bagD.die)
+			var exclusiveMin = Number(bagD.die.substring(1));
 			var cellResult = document.createElement('td');
+			var total = 0;
+      			var average = 0;
+			minimum = exclusiveMin;
+     			maximum = null;
+      			cellTotal = document.createElement('td');
 			/*Iterates thru dicebag to roll a specific die (num) times.
 			Ensures that each die is rolled enough times.*/
 			for(var i = 1; i <= bagD.num; i++) {
@@ -144,6 +185,9 @@ function rollDice() {
 				/*Stores random dice roll within sides of die.
 				Ensures that die rolls cannot be impossibly large*/
 				var result =  (getRandRollBySides(1, dspanMatcher));
+				minMax(result, prevRoll);
+        			total += result;
+        			average = total/bagD.num;
 				//var diceSpan = document.createElement('span');
 				cellResult.innerHTML = cellResult.innerHTML + result;
 				
@@ -151,7 +195,7 @@ function rollDice() {
 				if(bagD.num > 1 && i != bagD.num) {
 					cellResult.innerHTML = cellResult.innerHTML + ", ";	
 				}
-				rowFiller(bagD.die, cellResult);
+				rowFiller(bagD.die, cellResult, total, average);
 				/*Places result value in diceSpan to display results in HTML*/
 				//diceSpan.innerHTML = result;
 				//div.appendChild(diceSpan);
