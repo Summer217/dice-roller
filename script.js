@@ -7,17 +7,11 @@ var numOfCont = 1;
 var dicebag = [];
 
 
-var prevRoll = null;
-var minimum = null;
-var maximum = null;
-var tableRow = null;
-var cellDie = null;
-var tableRow = null;
-var cellDie = null;
-var cellTotal = null;
-var cellAverage = null;
-var cellMin = null;
-var cellMax = null;
+var prevRoll = false;
+var minimum = 0;
+var maximum = 0;
+var tableRow = "placeholder";
+
 
 
 /*Main function.
@@ -31,10 +25,11 @@ function roller(){
 
 function rowFiller(die, cellResult, total, average) {
 	tableRow = document.createElement('tr');
-	cellDie = document.createElement('td');
-	cellAverage = document.createElement('td');
-  	cellMin = document.createElement('td');
-  	cellMax = document.createElement('td');
+	var cellDie = document.createElement('td');
+	var cellAverage = document.createElement('td');
+  	var cellMin = document.createElement('td');
+  	var cellMax = document.createElement('td');
+	var cellTotal = document.createElement('td');
 	cellDie.innerHTML = die;
 	cellTotal.innerHTML = total;
   	cellAverage.innerHTML = Math.round(average);
@@ -74,7 +69,7 @@ function tableMaker() {
 }
 
 function minMax(result, prev) {
-  if(prev == null) {
+  if(prev == false) {
     //console.log("YAY")
     prevRoll = result;
     minimum = result;
@@ -182,8 +177,8 @@ function rollDice() {
 			var total = 0;
       			var average = 0;
 			minimum = exclusiveMin;
-     			maximum = null;
-      			cellTotal = document.createElement('td');
+     			maximum = 0;
+      			//cellTotal = document.createElement('td');
 			/*Iterates thru dicebag to roll a specific die (num) times.
 			Ensures that each die is rolled enough times.*/
 			for(var i = 1; i <= bagD.num; i++) {
