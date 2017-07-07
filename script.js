@@ -106,15 +106,19 @@ function populateBag() {
 	dicebag = [];
 	
 	for (var j = 1; j < (numOfCont+1); j++) {
-		var z = document.getElementById("container-" + j).children;
-		var xx = z[0];
-		var yy = z[1];
-		var die = yy.value;
-		var number = Number(xx.value);
-		dicebag.push({die: die, num: number});
+		if (document.getElementById("container-" + j) == null) {
+			
+		} else {
+			var z = document.getElementById("container-" + j).children;
+			var xx = z[0];
+			var yy = z[1];
+			var die = yy.value;
+			var number = Number(xx.value);
+			dicebag.push({die: die, num: number});
 	}
 	/*Sets the bag as "full" (array has all values)*/
 	fullBag = 1;
+	}
 }
 
 /*Copies dice amount and dice type field when more is pressed*/
