@@ -5,7 +5,6 @@ var numOfCont = 1;
 /*Stores dice types and counts so that rollDice can use them as parameters*/
 var dicebag = [];
 
-var prevRoll = false;
 var minimum = 0;
 var maximum = 0;
 var tableRow = "placeholder";
@@ -65,17 +64,12 @@ function tableMaker() {
 }
 
 function minMax(result, prev) {
-  if(prev == false) {
-    //console.log("YAY")
-    prevRoll = result;
-    minimum = result;
-    maximum = result;
-  }
   if(result > maximum) {
-    maximum = result;
-  }
+    	maximum = result;
+  } else {}
   if(result < minimum) {
-    minimum = result;
+    	minimum = result;
+  } else {}
   }
 }
 
@@ -178,7 +172,7 @@ function rollDice() {
 				/*Stores random dice roll within sides of die.
 				Ensures that die rolls cannot be impossibly large*/
 				var result =  (getRandRollBySides(1, dspanMatcher));
-				minMax(result, prevRoll);
+				minMax(result);
         			total += result;
         			average = total/bagD.num;
 				cellResult.innerHTML = cellResult.innerHTML + result;
