@@ -1,10 +1,11 @@
-/*Main function.
-Called by submitButton (value = Roll!)*/
-function roller(){
-	tableMaker();
-	populateBag();
-	rollDice();
-}
+
+/*Keeps track of total number of containers to ensure all fields are captured*/
+var numOfCont = 1;
+
+
+/*Stores dice types and counts so that rollDice can use them as parameters*/
+var dicebag = [];
+
 
 var prevRoll = null;
 var minimum = null;
@@ -17,6 +18,16 @@ var cellTotal = null;
 var cellAverage = null;
 var cellMin = null;
 var cellMax = null;
+
+
+/*Main function.
+Called by submitButton (value = Roll!)*/
+function roller(){
+	tableMaker();
+	populateBag();
+	rollDice();
+}
+
 
 function rowFiller(die, cellResult, total, average) {
 	tableRow = document.createElement('tr');
@@ -82,8 +93,6 @@ function getRandRollBySides (min, max) {
 	//return Math.floor((Math.random() * (max)) + 1);
 }
 
-/*Keeps track of total number of containers to ensure all fields are captured*/
-var numOfCont = 1;
 
 /*Dynamically generates a unique id (starting at 1) for dice-container(container-#),
 countField(countField-#),and chosenDieType(dieType-#)*/
@@ -110,8 +119,6 @@ function removeCont(buttonId) {
 }
 */
 
-/*Stores dice types and counts so that rollDice can use them as parameters*/
-var dicebag = [];
 function populateBag() {
 	dicebag = [];
 	//var x = document.getElementsByClassName('countField');
