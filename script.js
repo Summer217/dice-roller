@@ -2,17 +2,13 @@
 /*Keeps track of total number of containers to ensure all fields are captured*/
 var numOfCont = 1;
 
-
 /*Stores dice types and counts so that rollDice can use them as parameters*/
 var dicebag = [];
-
 
 var prevRoll = false;
 var minimum = 0;
 var maximum = 0;
 var tableRow = "placeholder";
-
-
 
 /*Main function.
 Called by submitButton (value = Roll!)*/
@@ -116,23 +112,17 @@ function removeCont(buttonId) {
 
 function populateBag() {
 	dicebag = [];
-	//var x = document.getElementsByClassName('countField');
-	//var y = document.getElementsByClassName('chosenDieType');
-	//var addons = document.getElementById('addons').childElementCount;
+	
 	for (var j = 1; j < (numOfCont+1); j++) {
 		var z = document.getElementById("container-" + j).children;
-		console.log(z);
 		var xx = z[0];
 		var yy = z[1];
 		var die = yy.value;
 		var number = Number(xx.value);
-		/*var die = y[j].value;
-		var number = Number(x[j].value);*/
 		dicebag.push({die: die, num: number});
 	}
 	/*Sets the bag as "full" (array has all values)*/
 	fullBag = 1;
-	//console.log(dicebag[0].die + ' key test');
 }
 
 /*Copies dice amount and dice type field when more is pressed*/
@@ -144,9 +134,11 @@ function addMenu() {
 	newMenus.style.display = 'block';
 	var newMenu = newMenus.childNodes;
 	var newCountField = newMenus.children[0];
+	
 	/*Resets number field to 1 to provide visual cohesion and organization*/
 	newCountField.value = 1;
 	var newDieField = newMenus.children[1];
+	
 	/*Uncomment below to enable remove button features
 	var removeBtn = document.createElement("input");
 	removeBtn.type = 'button';
@@ -178,7 +170,6 @@ function rollDice() {
       			var average = 0;
 			minimum = exclusiveMin;
      			maximum = 0;
-      			//cellTotal = document.createElement('td');
 			/*Iterates thru dicebag to roll a specific die (num) times.
 			Ensures that each die is rolled enough times.*/
 			for(var i = 1; i <= bagD.num; i++) {
@@ -190,7 +181,6 @@ function rollDice() {
 				minMax(result, prevRoll);
         			total += result;
         			average = total/bagD.num;
-				//var diceSpan = document.createElement('span');
 				cellResult.innerHTML = cellResult.innerHTML + result;
 				
 				/*Add commas if result number is not first or last in series*/
@@ -198,12 +188,10 @@ function rollDice() {
 					cellResult.innerHTML = cellResult.innerHTML + ", ";	
 				}
 				rowFiller(bagD.die, cellResult, total, average);
-				/*Places result value in diceSpan to display results in HTML*/
-				//diceSpan.innerHTML = result;
-				//div.appendChild(diceSpan);
+
 				/*For Loop End*/
 			}
-			//document.getElementById('results').appendChild(div);
+		
 			document.getElementById('table').appendChild(tableRow);
 		}
 	else console.log("ERROR for number input for " + bagD.die + ". Please input a non-negative integer.");
