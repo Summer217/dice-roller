@@ -17,19 +17,19 @@ function roller(){
 	rollDice();
 }
 
-
+/*Populates each row item with */
 function rowFiller(die, cellResult, total, average) {
-	tableRow = document.createElement('tr');
-	var cellDie = document.createElement('td');
+	tableRow =        document.createElement('tr');
+	var cellDie =     document.createElement('td');
 	var cellAverage = document.createElement('td');
-  	var cellMin = document.createElement('td');
-  	var cellMax = document.createElement('td');
-	var cellTotal = document.createElement('td');
-	cellDie.innerHTML = die;
-	cellTotal.innerHTML = total;
+  	var cellMin =     document.createElement('td');
+  	var cellMax =     document.createElement('td');
+	var cellTotal =   document.createElement('td');
+	cellDie.innerHTML =                     die;
+	cellTotal.innerHTML =                 total;
   	cellAverage.innerHTML = Math.round(average);
-  	cellMin.innerHTML = minimum;
-  	cellMax.innerHTML = maximum;
+  	cellMin.innerHTML =                 minimum;
+  	cellMax.innerHTML =                 maximum;
 	tableRow.appendChild(cellDie);
 	tableRow.appendChild(cellResult);
 	tableRow.appendChild(cellTotal);
@@ -40,14 +40,14 @@ function rowFiller(die, cellResult, total, average) {
 
 /*Adds headers to table*/
 function tableMaker() {
-	var table = document.getElementById('table');
-	var headRow = document.createElement('tr');
-	var headDie = document.createElement('th');
-	var headResult = document.createElement('th');
-	var headTotal = document.createElement('th');
+	var table =   document.getElementById('table');
+	var headRow =     document.createElement('tr');
+	var headDie =     document.createElement('th');
+	var headResult =  document.createElement('th');
+	var headTotal =   document.createElement('th');
 	var headAverage = document.createElement('th');
-	var headMin = document.createElement('th');
-	var headMax = document.createElement('th');
+	var headMin =     document.createElement('th');
+	var headMax =     document.createElement('th');
 	headDie.innerHTML = 'Die';
 	headResult.innerHTML = 'Result';
 	headTotal.innerHTML = 'Total';
@@ -63,6 +63,7 @@ function tableMaker() {
 	table.appendChild(headRow);
 }
 
+/**/
 function minMax(result, prev) {
   if(result > maximum) {
     	maximum = result;
@@ -72,10 +73,16 @@ function minMax(result, prev) {
   } else {}
  }
 
+
+/*Generates a semi-random number roll on the dice within a 
+*realistic lower bound (as of now always 1) and an 
+*upper bound (sides of the dice) which is provided by dice roller*/
+
 function getRandRollBySides (min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 	//return Math.floor((Math.random() * (max)) + 1);
 }
+
 
 
 /*Dynamically generates a unique id (starting at 1) for dice-container(container-#),
@@ -96,7 +103,9 @@ function clickedMore(clickCount) {
 	return clickCount;
 }
 
-//Uncomment below to enable remove button features
+
+
+/*Removes container when remove button is pressed*/
 function removeCont(buttonId) {
 	var thisCont = document.getElementById("container-" + buttonId);
 	thisCont.remove();
@@ -164,6 +173,8 @@ function rollDice() {
 			var cellResult = document.createElement('td');
 			var total = 0;
       			var average = 0;
+			/*Sets min to highest possible die value to ensure 
+			*that minMax can reduce that value if lower.*/
 			minimum = exclusiveMin;
      			maximum = 0;
 			/*Iterates thru dicebag to roll a specific die (num) times.
@@ -175,6 +186,7 @@ function rollDice() {
 				Ensures that die rolls cannot be impossibly large*/
 				var result =  (getRandRollBySides(1, dspanMatcher));
 				minMax(result);
+				/*Increments total by the number(s) rolled to keep track of the sum of the dice*/
         			total += result;
         			average = total/bagD.num;
 				cellResult.innerHTML = cellResult.innerHTML + result;
