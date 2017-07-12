@@ -96,6 +96,22 @@ function giveContUniqueId(input) {
 	
 }
 
+/*Resets form to default values and clears webpage of generated elements*/
+function resetter() {
+	var x = document.getElementById('countField-1');
+	var y = document.getElementById('dieType-1').options;
+	x.value = 1;
+	y.selectedIndex = 0;
+	var destroyDiv = document.getElementById('addons');
+	var destroyTable = document.getElementById('table');
+	while(destroyDiv.firstChild) {
+		destroyDiv.removeChild(destroyDiv.firstChild);
+	}
+	while(destroyTable.firstChild) {
+		destroyTable.removeChild(destroyTable.firstChild);
+	}
+}
+
 /*counts how many times moreMenuButton has been clicked to maintain accurate # of total containers.
 Needed to ensure all dice and counts chosen are populated in dicebag array. */
 function clickedMore(clickCount) {
