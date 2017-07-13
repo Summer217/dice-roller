@@ -127,7 +127,7 @@ function badChoice() {
 	   if (document.getElementById('container-' + k) == null) {
 	   	   console.log("Do nothing");
 	   } else {
-	     var qadrizzle = document.getElementById('dieType' + k);
+	     var qadrizzle = document.getElementById('dieType-' + k);
 	     var qarain = qadrizzle.options[qadrizzle.selectedIndex].value;
 	     if (qarain == 'select') {
 		report = true;
