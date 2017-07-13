@@ -153,8 +153,8 @@ function populateBag() {
 	
 	for (var j = 1; j < (numOfCont+1); j++) {
 		var qasmoke = document.getElementById('dieType-' + j);
-		if (document.getElementById('container-' + j) == null) {
-			if (qasmoke.options[qasmoke.selectedIndex].value);
+		if (document.getElementById('container-' + j) != null) {
+			if (qasmoke.options[qasmoke.selectedIndex].value == 'select') {
 			   hook++;
 			   //console.log('Error: You cannot choose select as a die value!');
 			   alert('Error: All dice must be selected before rolling!');
