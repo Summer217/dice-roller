@@ -123,7 +123,7 @@ function clickedMore(clickCount) {
 
 function badChoice() {
 	var report = false;
-	for (var k = 1; k < (numOfCont + 1; k++) {
+	for (var k = 1; k < (numOfCont + 1); k++) {
 	   if (document.getElementById('container-' + k) == null) {
 	   	   console.log("Do nothing");
 	   } else {
