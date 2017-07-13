@@ -125,7 +125,7 @@ function badChoice() {
 	var report = false;
 	for (var k = 1; k < (numOfCont + 1); k++) {
 	   if (document.getElementById('container-' + k) == null) {
-	   	   console.log("Do nothing");
+	   	   //console.log("Do nothing");
 	   } else {
 	     var qadrizzle = document.getElementById('dieType-' + k);
 	     var qarain = qadrizzle.options[qadrizzle.selectedIndex].value;
@@ -186,7 +186,7 @@ function addMenu() {
 	var invalid = badChoice();
 	
 	if (invalid == true) {
-		alert('Please choode a die type before adding more!');
+		alert('Please choose a die type before adding more!');
 		//console.log("Dragon noises");
 	} else {
 	
