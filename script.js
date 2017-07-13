@@ -110,6 +110,8 @@ function resetter() {
 	while(destroyTable.firstChild) {
 		destroyTable.removeChild(destroyTable.firstChild);
 	}
+	/*Resets number of containers to one after reset*/
+	numOfCont = 1;
 }
 
 /*counts how many times moreMenuButton has been clicked to maintain accurate # of total containers.
@@ -119,6 +121,24 @@ function clickedMore(clickCount) {
 	return clickCount;
 }
 
+function badChoice() {
+	var report = false;
+	for (var k = 1; k < (numOfCont + 1; k++) {
+	   if (document.getElementById('container-' + k) == null) {
+	   	   console.log("Do nothing");
+	   } else {
+	     var qadrizzle = document.getElementById('dieType' + k);
+	     var qarain = qadrizzle.options[qadrizzle.selectedIndex].value;
+	     if (qarain == 'select') {
+		report = true;
+	     } else {
+	        report = false;
+	     }
+        }
+   }
+   return report;
+}
+	
 
 
 /*Removes container when remove button is pressed*/
@@ -129,25 +149,48 @@ function removeCont(buttonId) {
 
 function populateBag() {
 	dicebag = [];
+	var hook = 0;
 	
 	for (var j = 1; j < (numOfCont+1); j++) {
-		if (document.getElementById("container-" + j) == null) {
-			
-		} else {
-			var z = document.getElementById("container-" + j).children;
-			var xx = z[0];
-			var yy = z[1];
-			var die = yy.value;
-			var number = Number(xx.value);
-			dicebag.push({die: die, num: number});
+		var qasmoke = document.getElementById('dieType-' + j);
+		if (document.getElementById('container-' + j) == null) {
+			if (qasmoke.options[qasmoke.selectedIndex].value);
+			   hook++;
+			   //console.log('Error: You cannot choose select as a die value!');
+			   alert('Error: All dice must be selected before rolling!');
+		        } else {
+			   var z =      document.getElementById('container-' + j).children;
+			   var xx =     z[0];
+			   var yy =     z[1];
+			   var die =    yy.value;
+			   var number = Number(xx.value);
+			   dicebag.push({die: die, num: number});
 	}
 	/*Sets the bag as "full" (array has all values)*/
 	fullBag = 1;
+	if (hook > 0) {
+		dicebag= [];
+		var destroyTable = document.getElementById('table');
+		while(destroyTable.firstChild) {
+			destroyTable.removeChild(destroyTable.firstChild);
+		}
 	}
+	hook = 0;
+	}
+   }
 }
 
 /*Copies dice amount and dice type field when more is pressed*/
 function addMenu() {
+	
+	var invalid = badChoice();
+	
+	if (invalid == true) {
+		alert('Please choode a die type before adding more!');
+		//console.log("Dragon noises");
+	} else {
+	
+	
 	numOfCont = clickedMore(numOfCont);
 	var newMenus = document.getElementById('container-1').cloneNode(true);
 	newMenus.id = '';
@@ -176,6 +219,7 @@ function addMenu() {
 	var addons = document.getElementById('addons');
 	addons.appendChild(newMenus);
  }
+}
 
 function rollDice() {
 	/*bagD is bagDice*/
