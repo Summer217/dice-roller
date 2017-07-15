@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dndice.mobile" version="2.25" xmlns="http://www.w3.org/ns/widgets">
+<widget id="com.dndice.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
  <name>Dice Dungeon</name>
  <description>An app for rolling dice for a d20 system</description>
+ <author>Austin Dooley</author>
+ platform name="android" />
 </widget>
