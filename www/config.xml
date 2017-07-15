@@ -3,5 +3,5 @@
  <name>Dice Dungeon</name>
  <description>An app for rolling dice for a d20 system</description>
  <author>Austin Dooley</author>
- platform name="android" />
+ <platform name="android" />
 </widget>
