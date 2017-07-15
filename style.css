@@ -36,3 +36,19 @@ table {
 td {
 	text-align: center;
 }
+
+th {
+  color: green;
+  font-family: Papyrus, sans-serif, serif;
+  padding: 5px;
+}
+
+tr:nth-child(odd) {background-color: #f2f2f2}
+ 
+tr {
+  font-family: Times New Roman, serif;
+}
+
+td {
+  padding: 4px;
+}
