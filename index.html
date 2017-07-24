@@ -3,32 +3,39 @@
 		<link rel='stylesheet' href="style.css">
 	</head>
 	<body>
-		<div id='fields' class='formInit'>
-			<div class="dice-container" id="container-1"> 	
-				<input type='number' name='countField' class= 'countField' id = 'countField-1' value='1' min='0' max='10'/>
-				<select name='chosenDieType' class='chosenDieType' id = 'dieType-1'>
-					<option selected disabled='disabled' id='select' value='select'>-Select-</option>
-					<option value='d6'>d6</option>
-					<option value='d10'>d10</option>
-					<option value='d12'>d12</option>
-					<option value='d20'>d20</option>
-				</select>
+		<header>
+			<img src='images/logo.jpg' alt='Cool logo'>
+			"Dungeon Dice"
+			<img src='images/hamburger.jpg' alt='burger'>
+		</header>
+		<div id='bigDiv'>
+			<form id = 'inputs'>
+				<div id='fields' class='formInit'>
+					<div class="dice-container" id="container-1"> 	
+						<input type='number' name='countField' class= 'countField' id = 'countField-1' value='1' min='0' max='10'/>
+						<select name='chosenDieType' class='chosenDieType' id = 'dieType-1'>
+						<!--<option selected disabled='disabled' id='select' value='select'>-Select-</option> -->
+							<option value='d6'>d6</option>
+							<option value='d10'>d10</option>
+							<option value='d12'>d12</option>
+							<option value='d20'>d20</option>
+						</select>
+					</div>
+				</div>
+				<div id='addons' class='formAddons'></div>
+			</form>
+	 		<form name='getNewField'>
+				<input type='button' onclick='addMenu()' id='moreMenuButton' value='More'/>
+	 		</form> 
+			<div id='results'>
+				<table id='table'></table>
 			</div>
 		</div>
-		<div id='addons' class='formAddons'></div> 
-		<!--<span id='Mutable'>y</span>-->
-	 	<form name='getNewField'>
-			<input type='button' onclick='addMenu()' id='moreMenuButton' value='More'/>
-	 	</form> 
-	 	<form name='submit'>
-		 <input type='button' onclick='roller()' id='submitButton' value='Roll!'/>
-		</form>
-		<div id='results'>
-			<table id='table'></table>
-		</div>
-		<form name='reset'>
-			<input type='button' onclick='resetter()' id='resetButton' value='Reset'/>
-		</form>
+		<footer>
+			<form name='buttons'>
+				<input type='button' onclick='resetter()' id='resetButton' value='Reset'/>
+				<input type='button' onclick='roller()' id='submitButton' value='Roll!'/>
+			</form>
 		<script src="script.js"></script>
 	</body>
 </html>
