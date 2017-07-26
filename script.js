@@ -17,6 +17,32 @@ function roller(){
 	rollDice();
 }
 
+function toggleInput() {
+	var inputState = document.getElementById('inputDiv');
+	var btn = document.getElementById('toggleInput');
+	if (inputState.className == 'show') {
+		//console.log('Mayonaise');
+    		inputState.className = 'hide';
+    		btn.value = 'Show';
+	} else (inputState.className == 'hide') {
+		inputState.className = 'show';
+		btn.value = 'Hide';
+	}
+    
+  }
+
+function toggleResults() {
+	var resultState = document.getElementById('results');
+	var btn = document.getElementById('toggleResult');
+	if (resultState.className == 'show') {
+		resultState.className = 'hide';
+		btn.value = 'Show';
+	} else {
+		resultState.className = 'hide';
+		btn.value = 'Hide';
+	}
+}
+
 /*Populates each row item with */
 function rowFiller(die, cellResult, total, average) {
 	tableRow =        document.createElement('tr');
