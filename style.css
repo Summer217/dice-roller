@@ -36,3 +36,33 @@ table {
 td {
 	text-align: center;
 }
+
+
+
+
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+#toggleInput {
+  float: right;
+}
+
+#toggleResult {
+  float: right;
+}
+
+#bigDiv {
+  overflow: hidden;
+  height: auto;
+}
+
+
+
+
+
