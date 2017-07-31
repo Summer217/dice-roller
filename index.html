@@ -3,14 +3,15 @@
 		<link rel='stylesheet' href="style.css">
 	</head>
 	<body>
-		<header>
-			<img src='images/logo.jpg' alt='Cool logo'>
-			"Dungeon Dice"
-			<img src='images/hamburger.jpg' alt='burger'>
-		</header>
+		<div id='header'>
+			<img id='logo' src='images/logo.jpg' alt='Cool logo'>
+			<img id='title' alt='Dungeon Dice' src='images/title.jpg'>
+			<img id='hamburger' src='images/hamburger.jpg' alt='burger'>
+		</div>
+		<div id='wrapper'>
 		<div id='bigDiv'>
-			<input type='button' id='toggleInput' value='Hide' onclick='toggleInput()'/>
-			<div id='inputDiv' class='show'>
+			<!-- <input type='button' id='toggleInput' value='Hide' onclick='toggleInput()'/> -->
+			
 			<form id = 'inputs'>
 				<div id='fields' class='formInit'>
 					<div class="dice-container" id="container-1"> 	
@@ -26,23 +27,21 @@
 				</div>
 				<div id='addons' class='formAddons'></div>
 			</form>
-	 		<form name='getNewField'>
-				<input type='button' onclick='addMenu()' id='moreMenuButton' value='More'/>
+	 		<form name='getNewField' id='more'>
+				<input type='button' onclick='addMenu()' id='moreMenuButton' value='+'/>
 	 		</form>
-			</div>
-		</div>
-		<div id='separator'>
-			<input type='button' id='toggleResult' value='Hide' onclick='toggleResults()'/>
 			<div id='results' class='show'>
 				<table id='table'></table>
 			</div>
 		</div>
-		<footer>
-			<form name='buttons'>
+		</div>
+		<div id='footer'>
+			<form name='buttons' id='buttons'>
 				<input type='button' onclick='roller()' id='submitButton' value='Roll!'/>
 				<input type='button' onclick='resetter()' id='resetButton' value='Reset'/>
 				
 			</form>
+		</div>
 		<script src="script.js"></script>
 	</body>
 </html>
