@@ -17,6 +17,7 @@ function roller(){
 	rollDice();
 }
 
+/*
 function toggleInput() {
 	var inputState = document.getElementById('inputDiv');
 	var btn = document.getElementById('toggleInput');
@@ -29,8 +30,9 @@ function toggleInput() {
 		btn.value = 'Hide';
 	}
     
-  }
+  } */
 
+/*
 function toggleResults() {
 	var resultState = document.getElementById('results');
 	var btn = document.getElementById('toggleResult');
@@ -41,7 +43,7 @@ function toggleResults() {
 		resultState.className = 'hide';
 		btn.value = 'Hide';
 	}
-}
+} */
 
 /*Populates each row item with */
 function rowFiller(die, cellResult, total, average) {
@@ -232,7 +234,7 @@ function addMenu() {
 	//Uncomment below to enable remove button features
 	var removeBtn = document.createElement("input");
 	removeBtn.type = 'button';
-	removeBtn.value = "Remove";
+	removeBtn.value = "X";
 	newMenus.appendChild(removeBtn);
 
 	giveContUniqueId(newMenus);
